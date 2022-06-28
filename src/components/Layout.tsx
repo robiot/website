@@ -24,11 +24,6 @@ const Layout = ({
     particles?: boolean;
 }) => {
     const theme = useContext(themeContext);
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
 
     return (
         <Wrapper>
@@ -62,13 +57,9 @@ const Layout = ({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {isMounted && (
-                <>
-                    <Nav />
-                    {theme[0] == "dark" && particles && <CustomParticles />}
-                    {children}
-                </>
-            )}
+            <Nav />
+            {theme[0] == "dark" && particles && <CustomParticles />}
+            {children}
         </Wrapper>
     );
 };
